@@ -50,13 +50,6 @@
             <%= link_to destroy_admin_session_path, method: :delete do %>
               <i class="fa fa-sign-out fa-fw"></i> Sair
             <% end %>
-            <% @admins.each do |admin| %>
-              <tr>
-                <td>
-                  <%= admin.email %>
-                </td>
-              <tr>
-            <% end %>
           </li>
         </ul>
         <!-- /.dropdown-user -->
