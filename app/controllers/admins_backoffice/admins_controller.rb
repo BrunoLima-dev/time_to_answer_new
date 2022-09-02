@@ -1,6 +1,6 @@
 class AdminsBackoffice::AdminsController < AdminsBackofficeController
   before_action :verify_password, only: [:update] # verificar o password antes de update
-  before_action :set_admin, only: [:edit, :update] # Setar o admin antes de edit e update
+  before_action :set_admin, only: [:edit, :update, :destroy] # Setar o admin antes de edit e update
 
   def index
     @admins = Admin.all  # Recebe todos os admins com os seus valores
@@ -26,6 +26,14 @@ class AdminsBackoffice::AdminsController < AdminsBackofficeController
       redirect_to admins_backoffice_admins_path, notice: "Administrador atualizado com sucesso!"
     else
       render :edit
+    end
+  end
+
+  def destroy
+    if @admin.destroy
+      redirect_to admins_backoffice_admins_path, notice: "Administrador excluido com sucesso!"
+    else
+      render :index
     end
   end
 
