@@ -3,7 +3,7 @@ class AdminsBackoffice::AdminsController < AdminsBackofficeController
   before_action :set_admin, only: [:edit, :update, :destroy] # Setar o admin antes de edit e update
 
   def index
-    @admins = Admin.all  # Recebe todos os admins com os seus valores
+    @admins = Admin.all.page(params[:page]).per(4)  # Recebe todos os admins com os seus valores
   end
 
   def new
