@@ -2,7 +2,7 @@ class AdminsBackoffice::SubjectsController < AdminsBackofficeController
   before_action :set_subject, only: [:edit, :update, :destroy] # Setar o admin antes de edit e update
 
   def index
-    @subjects = Subject.all.page(params[:page]).per(4)  # Recebe todos os admins com os seus valores
+    @subjects = Subject.all.page(params[:page]).per(10)  # Recebe todos os admins com os seus valores
   end
 
   def new
@@ -12,7 +12,7 @@ class AdminsBackoffice::SubjectsController < AdminsBackofficeController
   def create
     @subject = Subject.new(params_subject)
     if @subject.save
-      redirect_to admins_backoffice_subjects_path, notice: "Assunto/Área cadastrado com sucesso!"
+      redirect_to new_admins_backoffice_subject_path notice: "Assunto/Área cadastrado com sucesso!"
     else
       render :new
     end
@@ -22,7 +22,7 @@ class AdminsBackoffice::SubjectsController < AdminsBackofficeController
 
   def update
     if @subject.update(params_subject)
-      redirect_to admins_backoffice_subjects_path, notice: "Assunto/Área atualizado com sucesso!"
+      redirect_to admins_backoffice_subject_path, notice: "Assunto/Área atualizado com sucesso!"
     else
       render :edit
     end
