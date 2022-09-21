@@ -1,8 +1,9 @@
 class AdminsBackoffice::SubjectsController < AdminsBackofficeController
-  before_action :set_subject, only: [:edit, :update, :destroy] # Setar o admin antes de edit e update
+  before_action :set_subject, only: [:edit, :update, :destroy] # Setar o subjects antes de edit e update
 
   def index
-    @subjects = Subject.all.page(params[:page]).per(4)  # Recebe todos os admins com os seus valores
+    # Pego todos Assubtos/Área pagino e ordeno por descrição
+    @subjects = Subject.all.order(:description).page(params[:page]).per(10)  # Recebe todos os Assuntos/Área com os seus valores
   end
 
   def new
