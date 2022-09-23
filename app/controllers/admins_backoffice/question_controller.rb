@@ -1,4 +1,4 @@
-class AdminsBackoffice::QuestionController < AdminsBackofficeController
+class AdminsBackoffice::QuestionsController < AdminsBackofficeController
   before_action :set_question, only: [:edit, :update, :destroy] # Setar o questions antes de edit e update
 
   def index
@@ -23,7 +23,7 @@ class AdminsBackoffice::QuestionController < AdminsBackofficeController
 
   def update
     if @question.update(params_question)
-      redirect_to admins_backoffice_questions_path, notice: "Questões atualizado com sucesso!"
+      redirect_to admins_backoffice_question_path, notice: "Questões atualizado com sucesso!"
     else
       render :edit
     end
@@ -31,7 +31,7 @@ class AdminsBackoffice::QuestionController < AdminsBackofficeController
 
   def destroy
     if @question.destroy
-      redirect_to admins_backoffice_questions_path, notice: "Questões excluido com sucesso!"
+      redirect_to admins_backoffice_question_path, notice: "Questões excluido com sucesso!"
     else
       render :index
     end
