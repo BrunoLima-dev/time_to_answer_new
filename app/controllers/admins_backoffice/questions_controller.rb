@@ -1,9 +1,9 @@
-class AdminsBackoffice::QuestionController < AdminsBackofficeController
+class AdminsBackoffice::QuestionsController < AdminsBackofficeController
   before_action :set_question, only: [:edit, :update, :destroy] # Setar o questions antes de edit e update
 
   def index
     # Pego todos Questões pagino e ordeno por descrição
-    @questions = Question.all.order(:description).page(params[:page]).per(10)  # Recebe todos as Questões com os seus valores
+    @questions = Question.all.order(:id).page(params[:page]).per(10)  # Recebe todos as Questões com os seus valores
   end
 
   def new
