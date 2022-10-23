@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get 'welcome/index' # Dashboard
     resources :admins   # Administradores
     resources :subjects # Para os assuntos/Áreas
+    resources :questions # Perguntas
   end
   devise_for :admins
   devise_for :users
