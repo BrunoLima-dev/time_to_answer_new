@@ -3,7 +3,7 @@ class AdminsBackoffice::QuestionsController < AdminsBackofficeController
 
   def index
     # Pego todos Questões pagino e ordeno por descrição
-    @questions = Question.all.order(:description).page(params[:page]).per(10)  # Recebe todos as Questões com os seus valores
+    @questions = Question.all.order(:id).page(params[:page]).per(10)  # Recebe todos as Questões com os seus valores
   end
 
   def new
@@ -23,7 +23,7 @@ class AdminsBackoffice::QuestionsController < AdminsBackofficeController
 
   def update
     if @question.update(params_question)
-      redirect_to admins_backoffice_question_path, notice: "Questões atualizado com sucesso!"
+      redirect_to admins_backoffice_questions_path, notice: "Questões atualizado com sucesso!"
     else
       render :edit
     end
@@ -31,7 +31,7 @@ class AdminsBackoffice::QuestionsController < AdminsBackofficeController
 
   def destroy
     if @question.destroy
-      redirect_to admins_backoffice_question_path, notice: "Questões excluido com sucesso!"
+      redirect_to admins_backoffice_questions_path, notice: "Questões excluido com sucesso!"
     else
       render :index
     end
