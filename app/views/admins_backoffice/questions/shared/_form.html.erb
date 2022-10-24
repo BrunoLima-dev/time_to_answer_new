@@ -17,7 +17,7 @@
   <div class="col-lg-12">
     <div class="panel panel-default">
       <div class="panel-heading" style="background-color: #4B98ED; color: #FBFBFB">
-        <%= "#{action_message} Pergunta"%>
+        <%= @question.model_name.human%>
       </div>
       <div class="panel-body">
         <div class="row">
@@ -31,7 +31,7 @@
 
               <div class="form-group" style="background-color:  #E1E8E8">
                 <%= form.label :subject_id %>
-                <%= form.collection_select(:subject_id, Subject.all, :id, :description, {}, {class:"form-control"}) %>
+                <%= form.collection_select(:subject_id, @subjects, :id, :description, {}, { class:"form-control" }) %>
               </div>
 
               <button type="submit" class="btn btn-success">Salvar</button>
