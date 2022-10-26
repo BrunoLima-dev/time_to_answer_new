@@ -12695,7 +12695,7 @@ Calendar.prototype.isSpanAllowed = function(span, constraint, overlap, event) {
 			if (overlap === false) {
 				return false;
 			}
-			// if the event's overlap is a test function, pass the peer event in question as the first param
+			// if the event's overlap is a test function, pass the peer event in questions as the first param
 			else if (typeof overlap === 'function' && !overlap(peerEvent, event)) {
 				return false;
 			}
