@@ -30,7 +30,7 @@
             <% end %>
 
             <%= link_to admins_backoffice_question_path(question), method: :delete, class:"btn btn-danger btn-circle",
-                        data: {confirm: t('messages.confirm_with', item: question.description.truncate(22))} do %>
+                        data: {confirm: t('message.confirm_with', item: question.description.truncate(22))} do %>
               <i class="fa fa-minus"></i>
             <% end %>
           </td>

@@ -28,7 +28,7 @@
             <% end %>
 
             <%= link_to admins_backoffice_admin_path(admin.id), method: :delete, class:"btn btn-danger btn-circle",
-                        data: {confirm: t('messages.confirm_with', item: admin.email.truncate(15))} do %>
+                        data: {confirm: t('message.confirm_with', item: admin.email.truncate(15))} do %>
               <i class="fa fa-minus"></i>
             <% end %>
           </td>
