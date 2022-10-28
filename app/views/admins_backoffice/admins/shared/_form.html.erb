@@ -26,15 +26,15 @@
 
               <div class="form-group">
                 <%= form.label :email %>
-                <%= form.text_field :email, class:"form-control", placeholder:"Email do Administrador" %>
+                <%= form.text_field :email, class:"form-control", placeholder: t('placeholder.admin_email')%>
               </div>
               <div class="form-group">
                 <%= form.label :password %>
-                <%= form.password_field :password, class:"form-control", placeholder: "Senha"  %>
+                <%= form.password_field :password, class:"form-control", placeholder: t('placeholder.admin_password')  %>
               </div>
               <div class="form-group">
                 <%= form.label :password_confirmation %>
-                <%= form.password_field :password_confirmation, class:"form-control", placeholder: "Confime sua senha" %>
+                <%= form.password_field :password_confirmation, class:"form-control", placeholder: t('placeholder.admin_confirmation_password') %>
               </div>
               <button type="submit" class="btn btn-success">Salvar</button>
             <% end %>
