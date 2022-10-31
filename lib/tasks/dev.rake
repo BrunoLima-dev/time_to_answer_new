@@ -1,9 +1,9 @@
 namespace :dev do
 
-  #  Rails.root indica o caminho até até a onde esta a aplicação, lib e tmp é a pasta a onde esta o arquivo
-  #  File.join ele é responsavel por colocar uma barra entre uma pasta e outra 
-  
   DEFAULT_PASSWORD = 123456
+  #  Rails.root indica o caminho até até a onde esta a aplicação, lib e tmp é a pasta a onde esta o arquivo
+  # File.join ele é responsavel por colocar uma barra entre uma pasta e outra 
+
   DEFAULT_FILES_PATH = File.join(Rails.root, 'lib', 'tmp')
 
   desc "Configura o ambiente de desenvolvimento"
@@ -56,27 +56,40 @@ namespace :dev do
   task add_subjects: :environment do
     file_name = 'subjects.txt'
     file_path = File.join(DEFAULT_FILES_PATH, file_name)
+
     File.open(file_path, 'r').each do |line|
       Subject.create!(description: line.strip)
-      # .strip - remove os spaços e barras
+      / .strip - remove os spaços e barras  /
       puts "task rodou com sucesso!"
     end
   end
 
-  desc "Adiciona perguntas e respostas"
+  desc "Adiciona perguntas e repostas"
   task add_answers_and_questions: :environment do
-    Subject.all.each do |subject|       # pecorro por todos os assuntos e chamo cada um de subject
-      rand(5..10).times do |i|          # uso rand para criar entre 5 a 10 perguntas e respostas
-        Question.create!(                      # crio uma questão e um assunto
+    Subject.all.each do |subject|
+      rand(5..10).times do |i|
+        params = { question: {
           description: "#{Faker::Lorem.paragraph} #{Faker::Lorem.question}",
-          subject: subject
-        )
+          subject: subject,
+          answers_attributes: []
+        }}
+
+        rand(2..5).times do |j|
+          params[:question][:answers_attributes].push(
+            { description: Faker::Lorem.sentence, correct: false } 
+          )
+        end
+
+        index = rand(params[:question][:answers_attributes].size)
+        params[:question][:answers_attributes][index] = {description: Faker::Lorem.sentence, correct: true }
+
+        Question.create!( params[:question] )
       end
     end
   end
 
   private
-  # Spinner para o console
+
   def show_spinner(msg_start, msg_end = "Concluído!")
     spinner = TTY::Spinner.new("[:spinner] #{msg_start}")
     spinner.auto_spin
